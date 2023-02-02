@@ -49,10 +49,10 @@
 ## Используемый стек технологий:
 
 - WebPack
+- TypeScript
 - React
 - React Router
 - Redux Thunk
-- TypeScript
 - SSR
 - SASS
 
