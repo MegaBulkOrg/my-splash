@@ -1,0 +1,19 @@
+{
+    "user1": {
+        "login": "John",
+        "password": "qwe34r78ty",
+        "e-mail": "zhenya@yahoo.com",
+        "occupation": "SEO аналитик",
+        "location": "618190, Тульская область, город Наро-Фоминск, бульвар Славы, 50",
+        "avatar": "https://i.pinimg.com/236x/b6/dc/d3/b6dcd3e3a266e2159a7275e3e57ced7a.jpg"
+
+    },
+    "user2": {
+        "login": "Pablo",
+        "password": "az567bu",
+        "e-mail": "baoluo@list.ru",
+        "occupation": "Web-разработчик",
+        "location": "569915, Московская область, город Солнечногорск, наб. Гагарина, 22",
+        "avatar": "https://kartinkof.club/uploads/posts/2022-12/1670445220_kartinkof-club-p-kartinki-gubka-bob-1.png"
+    }
+}
