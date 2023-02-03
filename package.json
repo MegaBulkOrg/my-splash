@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA node ./bin/dev.js",
     "prod": "cross-env NODE_ENV=production SITE=89.253.220.134 PORT=2000 ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA node ./bin/dev.js",
+    "deploy": "cross-env NODE_ENV=production SITE=site.ru ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA webpack --config webpack.config.js --mode production",
     "test": "jest"
   },
   "author": "BaoLuo <ceo@megabulk.ru>",
