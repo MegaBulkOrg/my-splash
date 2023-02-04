@@ -1,17 +1,20 @@
 {
-  "name": "WebPack assembly",
-  "version": "release",
-  "description": "WebPack assembly for React projects",
+  "name": "MY SplaSH",
+  "version": "1.0.0",
+  "description": "React app based on Unsplash API",
   "main": "index.js",
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA node ./bin/dev.js",
-    "prod": "cross-env NODE_ENV=production SITE=89.253.220.134 PORT=2000 ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA node ./bin/dev.js",
-    "deploy": "cross-env NODE_ENV=production SITE=my-splash.vercel.app ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA webpack --config webpack.config.js --mode production",
+    "build": "cross-env NODE_ENV=production SITE=my-splash.vercel.app PORT=2000 ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA webpack --config webpack.config.js",
+    "start": "node ./app/server/server.ru",
     "test": "jest"
   },
   "author": "BaoLuo <ceo@megabulk.ru>",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
     "@types/bootstrap": "^5.2.6",
     "@types/classnames": "^2.3.1",
@@ -22,9 +25,7 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-responsive-masonry": "^2.1.0",
     "@types/react-router-dom": "^5.3.3",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7"
-  },
-  "dependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.3",
     "classnames": "^2.3.2",
