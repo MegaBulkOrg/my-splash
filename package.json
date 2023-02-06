@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA node ./bin/dev.js",
     "build": "cross-env NODE_ENV=production SITE=my-splash.vercel.app PORT=2000 ACCESS_KEY=nYnWaFyV-Ix4eRCbJjYdVTpsTubIEDyumthkmB6TRjA webpack --config webpack.config.js",
-    "start": "node ./app/server/server.ru",
+    "start": "node ./app/server/server.js",
     "test": "jest"
   },
   "author": "BaoLuo <ceo@megabulk.ru>",
