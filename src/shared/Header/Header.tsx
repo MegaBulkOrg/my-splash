@@ -68,17 +68,19 @@ export function Header() {
               {enterBtn}
             </Nav>
             {/* ФОРМА ПОИСКА */}
-            <Form className="d-flex" onSubmit={handlerSubmit}>
-              <Form.Control
-                type="search"
-                className="me-2"
-                value={searchRequest}
-                onChange={handlerChange}
-                placeholder="Поиск..."
-                aria-label="Поиск..."
-              />
-              <Button type='submit' variant="outline-light">Искать</Button>
-            </Form>
+            {authStatus &&
+              <Form className="d-flex" onSubmit={handlerSubmit}>
+                <Form.Control
+                  type="search"
+                  className="me-2"
+                  value={searchRequest}
+                  onChange={handlerChange}
+                  placeholder="Поиск..."
+                  aria-label="Поиск..."
+                />
+                <Button type='submit' variant="outline-light">Искать</Button>
+              </Form>
+            }
           </Navbar.Collapse>
         </Container>
       </Navbar>
