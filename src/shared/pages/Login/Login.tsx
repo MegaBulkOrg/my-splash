@@ -46,11 +46,11 @@ export function Login() {
     <form onSubmit={handleSubmit}>
       <div className='mb-3'>
         <label htmlFor='inputLogin' className='form-label'>Логин</label>
-        <input type='text' value={login} className='form-control' id='inputLogin' onChange={handleChangeLogin} required />
+        <input type='text' value={login} className='form-control' id='inputLogin' onChange={handleChangeLogin} autoComplete='on' required />
       </div>
       <div className='mb-3'>
         <label htmlFor='inputPassword' className='form-label'>Пароль</label>
-        <input type='password' value={password} className='form-control' id='inputPassword' onChange={handleChangePassword} required />
+        <input type='password' value={password} className='form-control' id='inputPassword' onChange={handleChangePassword} autoComplete='on' required />
       </div>
       <button type='submit' className='btn btn-primary'>Войти</button>
       {result.length === 0 && firstSubmit &&

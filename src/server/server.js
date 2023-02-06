@@ -18,11 +18,11 @@ const app = express();
 
 if (process.env.NODE_ENV === "production") {
   app.use(compression());
-  app.use(
-    helmet({
+  app.use(helmet({
       contentSecurityPolicy: false,
-    })
-  );
+      // добавлено для аватарок пользователей
+      crossOriginEmbedderPolicy: false
+  }));
 }
 
 app.use("/static", express.static("./app/client"));
