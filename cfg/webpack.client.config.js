@@ -1,26 +1,29 @@
 const path = require('path');
 const { HotModuleReplacementPlugin, DefinePlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
 IS_DEV
-  ? console.log(`Сборка осуществляется в режиме разработки`)
-  : console.log(`Сборка осуществляется в режиме релиза`);
+  ? console.log(`[webpack.client.config.js]: сборка осуществляется в режиме разработки`)
+  : console.log(`[webpack.client.config.js]: сборка осуществляется в режиме релиза`);
 
 const GLOBAL_CSS_REGEXP = /\.global.css$/;
 
-const DEV_PLUGINGS = [
+const DEV_PLUGINS = [
     new CleanWebpackPlugin(),
     new HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin()
 ];
 
-const COMMON_PLUGINGS = [
+const COMMON_PLUGINS = [
   new DefinePlugin({
     'process.env.ACCESS_KEY': `'${process.env.ACCESS_KEY}'`,
     'process.env.SITE': `'${process.env.SITE}'`,
     'process.env.PORT': `'${process.env.PORT}'`,
-  }),
+    'process.env.PORT_HMR': `'${process.env.PORT_HMR}'`
+  })
 ];
 
 const SITE =
@@ -28,7 +31,7 @@ const SITE =
     ? 'localhost'
     : process.env.SITE;
 
-    const PORT =
+const PORT =
   process.env.PORT === 'undefined' || process.env.PORT === undefined
     ? 3000
     : process.env.PORT;
@@ -36,10 +39,10 @@ const SITE =
 function getEntry() {
   return IS_DEV
     ? [
-        path.resolve(__dirname, '../src/client/index.jsx'),
-        `webpack-hot-middleware/client?path=http://${SITE}:${PORT}/static/__webpack_hmr`,
+        path.resolve(__dirname, '../src/client/client.jsx'),
+        `webpack-hot-middleware/client?path=http://${SITE}:${process.env.PORT_HMR}/static/__webpack_hmr`,
       ]
-    : [path.resolve(__dirname, '../src/client/index.jsx')];
+    : [path.resolve(__dirname, '../src/client/client.jsx')];
 }
 
 module.exports = {
@@ -49,12 +52,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../app/client'),
     filename: 'client.js',
-    publicPath: '/static/',
+    publicPath: '/static/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: { 
-      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
       'Assets': path.resolve(__dirname, '../src/assets'),
       'Store': path.resolve(__dirname, '../src/store'),
       'Shared': path.resolve(__dirname, '../src/shared'),
@@ -63,7 +65,7 @@ module.exports = {
   },
   devtool: IS_DEV ? 'eval' : false,
   module: {
-    rules: [
+    rules: [      
       {
         test: /\.[jt]sx?$/,
         use: ['ts-loader'],
@@ -134,5 +136,5 @@ module.exports = {
       },
     ],
   },
-  plugins: IS_DEV ? DEV_PLUGINGS.concat(COMMON_PLUGINGS) : COMMON_PLUGINGS,
+  plugins: IS_DEV ? DEV_PLUGINS.concat(COMMON_PLUGINS) : COMMON_PLUGINS,
 };

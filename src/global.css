@@ -5,3 +5,51 @@
 img {
   width: 100%;
 }
+
+/* 
+  так как навигация выводится компонентами пакета "Reaсt Bootstrap" то класс этим элементам не назначить
+  из-за этого единственный вариант добавить свои стили - через глобальный CSS файл
+*/
+nav {
+  /* background: radial-gradient(circle, rgba(36, 138, 176, 1) 0%, rgba(255, 255, 255, 1) 100%); */
+  background: radial-gradient(circle, rgba(33, 91, 149, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+nav svg {
+  transition: fill .3s ease,
+              transform .3s ease;
+}
+
+nav svg:hover:not(:focus-visible) {
+  fill: #215b95;
+  transform: scale(1.2, 1.2);
+}
+
+nav svg:focus-visible::after {
+  fill: #215b95;
+  transform: scale(1.2, 1.2);
+}
+
+nav svg:active:not(:focus-visible) {
+  fill: #215b95;
+  transform: scale(1.2, 1.2);
+}
+
+.nav-link {
+  text-align: center !important;
+}
+
+@media (max-width:767px) {
+  nav svg {
+    fill: #ffffff
+  }
+  nav svg:hover:not(:focus-visible) {
+    fill: #ffffff
+  }
+  nav svg:focus-visible::after {
+    fill: #ffffff
+  }
+  nav svg:active:not(:focus-visible) {
+    fill: #ffffff
+  }
+}

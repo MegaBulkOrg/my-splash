@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { Loading } from 'Shared/Loading';
 import { TopicsModal } from 'Shared/modals/TopicsModal';
 import { RootState } from 'Store/store';
 import { topicsRequestAsync } from 'Store/topics';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { ErrorMsg } from '../ErrorMsg';
 import styles from './topics.sass';
 

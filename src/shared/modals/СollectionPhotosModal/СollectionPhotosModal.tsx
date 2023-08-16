@@ -26,15 +26,19 @@ export function СollectionPhotosModal({data, close, showStatus}:IData) {
   }
   
   return ReactDOM.createPortal((
-    <Modal show={showStatus} onHide={close}>
+    <Modal show={showStatus} onHide={close} size='xl'>
       <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+        <Modal.Title>
+          <p className="text-break">
+            {title}
+          </p>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img src={data.img} alt={data.title} />
       </Modal.Body>
       <Modal.Footer style={{display:'block'}}>
-        <p>{data.description}</p>
+        <p className="text-break">{data.description}</p>
         <p>Фотограф: <span className="badge text-bg-primary">{data.user}</span></p>
       </Modal.Footer>
     </Modal>

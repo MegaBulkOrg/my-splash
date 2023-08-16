@@ -1,7 +1,7 @@
+import { generateId } from 'ReactUtils/generateRandomIndex';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ReactDOM from 'react-dom';
-import { generateId } from 'ReactUtils/generateRandomIndex';
 import styles from './searchmodal.sass';
 
 interface ITags {
@@ -33,17 +33,20 @@ export function SearchModal({data, close, showStatus}:IData) {
   }
   const tags = data.tags.map(generateId)
 
-  
   return ReactDOM.createPortal((
-    <Modal show={showStatus} onHide={close}>
+    <Modal show={showStatus} onHide={close} size='xl'>
       <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+        <Modal.Title>
+          <p className="text-break">
+            {title}
+          </p>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img src={data.img} alt={data.title} />
       </Modal.Body>
       <Modal.Footer style={{display:'block'}}>
-        <p>{data.description}</p>
+        <p className="text-break">{data.description}</p>
         <p>Фотограф: <span className="badge text-bg-primary">{data.user}</span></p>
         <p><strong>Теги</strong></p>
         <div className='card-tags d-flex flex-wrap'>

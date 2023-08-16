@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import { useParams } from 'react-router-dom';
 import { Loading } from 'Shared/Loading';
 import { СollectionPhotosModal } from 'Shared/modals/СollectionPhotosModal';
 import { collectionRequestAsync } from 'Store/collection';
 import { RootState } from 'Store/store';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { useParams } from 'react-router-dom';
 import { ErrorMsg } from '../ErrorMsg';
-import { Unauthorized } from '../Unauthorized';
 import styles from './collection.sass';
 
 export interface IСollectionPhotosProps {
@@ -20,12 +19,6 @@ export interface IСollectionPhotosProps {
 }
 
 export function Сollection() {  
-  const authStatus = useSelector<RootState, boolean>((state) => state.isAuthorized)
-  // ЕСЛИ ЗАШЕЛ НА ЭТУ СТРАНИЦУ НЕ АВТОРИЗОВАВШИСЬ
-  if (!authStatus) {
-    return (<Unauthorized />)
-  }
-  // ЕСЛИ АВТОРИЗОВАЛСЯ
   const dispatch = useDispatch<any>()  
   const сollectionPhotos = useSelector<RootState, IСollectionPhotosProps[]>((state) => state.collection.items)
   const loading = useSelector<RootState, boolean>((state) => state.collection.loading)

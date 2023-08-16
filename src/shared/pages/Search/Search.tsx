@@ -1,14 +1,11 @@
+import { Loading } from 'Shared/Loading'
+import { SearchModal } from 'Shared/modals/SearchModal'
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import { useParams } from 'react-router-dom'
-import { Loading } from 'Shared/Loading'
-import { SearchModal } from 'Shared/modals/SearchModal'
-import { RootState } from 'Store/store'
 import { ErrorMsg } from '../ErrorMsg'
-import { Unauthorized } from '../Unauthorized'
 import styles from './search.sass'
 
 interface ITags {
@@ -26,15 +23,6 @@ export interface ISearchResultsProps {
 }
 
 export function Search() {
-  // ПРОВЕРКА НА АВТОРИЗАЦИЮ
-  const authStatus = useSelector<RootState, boolean>(
-    (state) => state.isAuthorized
-  )
-  // если не прошел проверку
-  if (!authStatus) {
-    return <Unauthorized />
-  }
-
   // состояния
   const { request } = useParams()
   const [searchResults, setSearchResults] = useState<any[]>([])
