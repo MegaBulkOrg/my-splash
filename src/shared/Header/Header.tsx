@@ -55,15 +55,15 @@ export function Header() {
           </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">            
+          <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
               {authStatus &&
                 <>
                   {/* КОЛЛЕКЦИИ */}
                   <Link to='/collections' className='nav-link d-flex justify-content-center'>
                     <Icon name="collections" />
-                  </Link>              
-                  {/* СТРАНИЦА ПОЛЬЗОВАТЕЛЯ */}                  
+                  </Link>
+                  {/* СТРАНИЦА ПОЛЬЗОВАТЕЛЯ */}
                   <Link to='/me' className='nav-link d-flex justify-content-center'>
                     <Icon name="me" />
                   </Link>
