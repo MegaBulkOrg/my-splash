@@ -107,7 +107,7 @@ export function Search() {
   // когда в шапке задаем другой запрос
   useEffect(() => {
     // так как при первом рендере useEffect обязательно триггерится
-    // то во избежание задвоения результатов запроса при превом вызове useEffect
+    // то во избежание задвоения результатов запроса при первом вызове useEffect
     // нужно нужно отменить загрузку
     if (nextPageNo !== 1) {
       setSearchResults([])
@@ -159,14 +159,13 @@ export function Search() {
                   className={styles.picture}
                   src={photo.thumb}
                   onClick={() => {
-                    // скобки у вызова handleShowDetails нужны (проверено)
                     handleShowDetails()
                     setDetails({
                       title: photo.title,
                       description: photo.description,
                       img: photo.img,
                       user: photo.user,
-                      tags: photo.tags,
+                      tags: photo.tags ? photo.tags : [],
                     })
                   }}
                   alt={photo.title}
@@ -183,7 +182,6 @@ export function Search() {
             а там где закончился список с предыдущими результатами
         */}
         {loading && <Loading />}
-        
         
         {/* КНОПКА ЗАГРУЗКИ ОЧЕРЕДНОЙ СТРАНИЦЫ РЕЗУЛЬТАТОВ ПОИСКА */}
         {nextPageNo <= totalPages && loadingButtonAction && (

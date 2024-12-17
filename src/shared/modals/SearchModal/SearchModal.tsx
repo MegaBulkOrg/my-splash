@@ -48,12 +48,14 @@ export function SearchModal({data, close, showStatus}:IData) {
       <Modal.Footer style={{display:'block'}}>
         <p className="text-break">{data.description}</p>
         <p>Фотограф: <span className="badge text-bg-primary">{data.user}</span></p>
-        <p><strong>Теги</strong></p>
-        <div className='card-tags d-flex flex-wrap'>
-          {tags.map((tag) => 
-            <span key={tag.id} className={`badge text-bg-primary ${styles.cardBage}`}>{tag.title}</span>
-          )}
-        </div>
+        {tags.length > 0 && <>
+          <p><strong>Теги</strong></p>
+          <div className='card-tags d-flex flex-wrap'>
+            {tags.map((tag) => 
+              <span key={tag.id} className={`badge text-bg-primary ${styles.cardBage}`}>{tag.title}</span>
+            )}
+          </div>
+        </>}
       </Modal.Footer>
     </Modal>
   ), modalNode)
