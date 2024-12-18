@@ -33,5 +33,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () =>
-  console.log(`[server.js]: приложение запустилось на http://${SITE}:${PORT}`)
+  process.env.SITE === "localhost"
+    ? console.log(`[server.js]: приложение запустилось на http://${SITE}:${PORT}`)
+    : console.log(`[server.js]: приложение запустилось на https://${SITE} (порт ${PORT})`)
 );
